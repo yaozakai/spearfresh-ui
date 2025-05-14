@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+
+.btn-standard {
+  @apply bg-[#012B3A] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#1d416e] hover:shadow-md;
+}
+
+.btn-cancel {
+  @apply bg-[#d0d6de] text-gray-700 font-bold py-2 px-4 rounded transition duration-200 hover:bg-gray-600 hover:shadow-md;
+}
+
+.btn-teal {
+  @apply bg-[#42D49C] text-white font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#3e7b91] hover:shadow-sm ;
+}
+
+.btn-pink {
+  @apply bg-[#fef1e9] hover:bg-[#fac6a6] text-[#143059] font-bold py-2 px-4 rounded-full transition duration-200 hover:shadow-sm ;
+}
+
+.btn-pill {
+  @apply bg-[#d0d6de] hover:bg-[#b0b9c5] text-[#143059] font-bold py-2 px-4 rounded-full transition duration-200 hover:shadow-sm ;
+}
+
+.btn-yellow {
+  @apply bg-[#fba919] border-none text-[#143059] font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#fccc75] hover:text-[#1d416e] hover:ring-2 hover:ring-gray-300;
+}
+
+@layer utilities {
+  @keyframes mountainFlyIn {
+    0% {
+      transform: translate(-50%, 80px) rotate(180deg) scale(0.7, 1.2);
+      opacity: 0;
+    }
+    30% {
+      transform: translate(-60%, 0px) rotate(120deg) scale(0.9, 1.1);
+      opacity: 1;
+    }
+    60% {
+      transform: translate(-40%, -60px) rotate(40deg) scale(1.05, 0.95);
+      opacity: 1;
+    }
+    80% {
+      transform: translate(-50%, -20px) rotate(-8deg) scale(1.02, 1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
+      opacity: 1;
+    }
+  }
+  @keyframes mountainImpact {
+    0% {
+      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
+    }
+    20% {
+      transform: translate(-50%, -12px) rotate(-6deg) scale(1.05, 0.95);
+    }
+    40% {
+      transform: translate(-50%, 8px) rotate(4deg) scale(0.98, 1.05);
+    }
+    60% {
+      transform: translate(-50%, -4px) rotate(-2deg) scale(1.01, 0.99);
+    }
+    80% {
+      transform: translate(-50%, 2px) rotate(1deg) scale(0.99, 1.01);
+    }
+    100% {
+      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
+    }
+  }
+  @keyframes textFall {
+    0% {
+      transform: translate(-50%, -180px) scale(1.1, 0.8);
+      opacity: 0;
+    }
+    60% {
+      transform: translate(-50%, 10px) scale(1.05, 1.1);
+      opacity: 1;
+    }
+    80% {
+      transform: translate(-50%, -8px) scale(0.98, 1.05);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, 0) scale(1, 1);
+      opacity: 1;
+    }
+  }
+  .animate-mountainFlyIn {
+    animation: mountainFlyIn 1.8s cubic-bezier(.7,1.7,.5,1) forwards;
+  }
+  .animate-mountainImpact {
+    animation: mountainImpact 0.5s cubic-bezier(.2,1.5,.5,1) 1.3s forwards;
+  }
+  .animate-textFall {
+    animation: textFall 1.2s cubic-bezier(.4,1.5,.5,1) 1.7s forwards;
+  }
+}
