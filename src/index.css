@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
@@ -33,8 +33,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+
 }
 
 h1 {
@@ -74,99 +73,64 @@ button:focus-visible {
   }
 }
 
+@layer components {
+  .btn {
+    @apply font-bold py-2 px-4 rounded transition duration-200 shadow focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  .btn-teal {
+    @apply btn bg-[#42D49C] text-white hover:bg-[#3e7b91] hover:shadow-md dark:bg-[#42D49C] dark:text-white dark:hover:bg-[#2bbd8c];
+  }
+  .btn-standard {
+    @apply btn bg-[#012B3A] text-white hover:bg-[#1d416e] disabled:bg-gray-300 disabled:cursor-not-allowed dark:bg-[#143059] dark:hover:bg-[#1a2332];
+  }
+  .btn-cancel {
+    @apply btn bg-[#d0d6de] text-gray-700 hover:bg-gray-600 dark:bg-[#2a3340] dark:text-gray-300 dark:hover:bg-[#19202b];
+  }
+  .btn-pink {
+    @apply btn bg-[#fef1e9] text-[#143059] hover:bg-[#fac6a6] dark:bg-[#3e2c2a] dark:text-white dark:hover:bg-[#a67c52];
+  }
+  .btn-pill {
+    @apply btn bg-[#d0d6de] text-[#143059] rounded-full hover:bg-[#b0b9c5] dark:bg-[#2a3340] dark:text-white dark:hover:bg-[#19202b];
+  }
+  .btn-yellow {
+    @apply btn bg-[#fba919] text-[#143059] hover:bg-[#fccc75] hover:text-[#1d416e] hover:ring-2 hover:ring-gray-300 dark:bg-[#fba919] dark:text-[#143059] dark:hover:bg-[#fccc75];
+  }
 
-.btn-standard {
-  @apply bg-[#012B3A] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#1d416e] hover:shadow-md;
-}
-
-.btn-cancel {
-  @apply bg-[#d0d6de] text-gray-700 font-bold py-2 px-4 rounded transition duration-200 hover:bg-gray-600 hover:shadow-md;
-}
-
-.btn-teal {
-  @apply bg-[#42D49C] text-white font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#3e7b91] hover:shadow-sm ;
-}
-
-.btn-pink {
-  @apply bg-[#fef1e9] hover:bg-[#fac6a6] text-[#143059] font-bold py-2 px-4 rounded-full transition duration-200 hover:shadow-sm ;
-}
-
-.btn-pill {
-  @apply bg-[#d0d6de] hover:bg-[#b0b9c5] text-[#143059] font-bold py-2 px-4 rounded-full transition duration-200 hover:shadow-sm ;
-}
-
-.btn-yellow {
-  @apply bg-[#fba919] border-none text-[#143059] font-bold py-2 px-4 rounded transition duration-200 hover:bg-[#fccc75] hover:text-[#1d416e] hover:ring-2 hover:ring-gray-300;
+  .h1 {
+    @apply text-4xl md:text-5xl font-extrabold tracking-tight mb-4;
+  }
+  .h2 {
+    @apply text-3xl font-bold mb-4;
+  }
+  .h3 {
+    @apply text-xl font-bold mb-2;
+  }
+  .h4 {
+    @apply text-lg font-bold mb-1;
+  }
+  .h5 {
+    @apply h1 font-overlock;
+  }
 }
 
 @layer utilities {
-  @keyframes mountainFlyIn {
-    0% {
-      transform: translate(-50%, 80px) rotate(180deg) scale(0.7, 1.2);
-      opacity: 0;
-    }
-    30% {
-      transform: translate(-60%, 0px) rotate(120deg) scale(0.9, 1.1);
-      opacity: 1;
-    }
-    60% {
-      transform: translate(-40%, -60px) rotate(40deg) scale(1.05, 0.95);
-      opacity: 1;
-    }
-    80% {
-      transform: translate(-50%, -20px) rotate(-8deg) scale(1.02, 1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
-      opacity: 1;
-    }
+  .bg-primary {
+    @apply bg-[#0c915e] dark:bg-[#42D49C];
   }
-  @keyframes mountainImpact {
-    0% {
-      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
-    }
-    20% {
-      transform: translate(-50%, -12px) rotate(-6deg) scale(1.05, 0.95);
-    }
-    40% {
-      transform: translate(-50%, 8px) rotate(4deg) scale(0.98, 1.05);
-    }
-    60% {
-      transform: translate(-50%, -4px) rotate(-2deg) scale(1.01, 0.99);
-    }
-    80% {
-      transform: translate(-50%, 2px) rotate(1deg) scale(0.99, 1.01);
-    }
-    100% {
-      transform: translate(-50%, 0) rotate(0deg) scale(1, 1);
-    }
+  .bg-secondary {
+    @apply bg-[#e8f7f1] dark:bg-[#143059];
   }
-  @keyframes textFall {
-    0% {
-      transform: translate(-50%, -180px) scale(1.1, 0.8);
-      opacity: 0;
-    }
-    60% {
-      transform: translate(-50%, 10px) scale(1.05, 1.1);
-      opacity: 1;
-    }
-    80% {
-      transform: translate(-50%, -8px) scale(0.98, 1.05);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, 0) scale(1, 1);
-      opacity: 1;
-    }
+  .bg-surface {
+    @apply bg-white dark:bg-[#19202b];
   }
-  .animate-mountainFlyIn {
-    animation: mountainFlyIn 1.8s cubic-bezier(.7,1.7,.5,1) forwards;
+  .text-primary {
+    @apply text-[#143059] dark:text-white;
   }
-  .animate-mountainImpact {
-    animation: mountainImpact 0.5s cubic-bezier(.2,1.5,.5,1) 1.3s forwards;
+  .text-secondary {
+    @apply text-gray-600 dark:text-gray-300;
   }
-  .animate-textFall {
-    animation: textFall 1.2s cubic-bezier(.4,1.5,.5,1) 1.7s forwards;
+  .border-primary {
+    @apply border-[#0c915e] dark:border-[#42D49C];
   }
+
 }

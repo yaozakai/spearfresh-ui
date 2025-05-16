@@ -1,29 +1,35 @@
-import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./main/Home";
+import Features from "./pages/Features";
+import About from "./pages/About";
+import Pricing from "./pages/Pricing";
+import Testimonials from "./pages/Testimonials";
+import Faqs from "./pages/Faqs";
+import NotFound from "./pages/NotFound";
+import Header from "./main/Header";
+import Footer from "./main/Footer";
 
 function App() {
-  const [mountainDone, setMountainDone] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMountainDone(true), 1800)
-    return () => clearTimeout(timer)
-  }, [])
-
   return (
-    <div className="relative w-screen h-screen bg-gray-600 flex items-end justify-center overflow-hidden">
-      <img
-        src="/mountainLogo.svg"
-        className={`absolute left-1/2 bottom-0 w-[420px] max-w-[90vw] -translate-x-1/2 opacity-0 animate-mountainFlyIn ${mountainDone ? 'animate-mountainImpact' : ''}`}
-        style={{ animationFillMode: 'forwards' }}
-        alt="Mountain Logo"
-      />
-      <img
-        src="/textLogo.svg"
-        className={`absolute left-1/2 top-0 w-[340px] max-w-[80vw] -translate-x-1/2 z-10 opacity-0 ${mountainDone ? 'animate-textFall' : ''}`}
-        style={{ animationFillMode: 'forwards' }}
-        alt="Text Logo"
-      />
-    </div>
-  )
+    <Router>
+      <div className="min-h-screen w-screen overflow-x-hidden flex flex-col bg-gradient-to-b from-[#e8f7f1] to-white dark:from-[#143059] dark:to-[#222c2a] text-[#143059] dark:text-white font-sans transition-colors duration-300">
+        {/* Header */}
+        <Header />
+        {/* Main Content */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/features" element={<Features />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/faqs" element={<Faqs />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
-export default App
+export default App;

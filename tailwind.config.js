@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'], // Ensure Vite-compatible paths
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        overlock: ['Overlock', 'cursive'],
+      },
+    },
   },
   plugins: [],
 };
