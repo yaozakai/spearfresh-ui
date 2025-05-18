@@ -1,56 +1,34 @@
-# Stage 1: Build the client (React app)
-FROM node:20-alpine AS client-build
+# Stage 1: Build the app (Vite/React)
+FROM node:20-alpine AS build
 
 # Set working directory
-WORKDIR /app/client
-
-# Copy the client dependencies and package.json
-COPY client/package.json client/package-lock.json ./
-
-# Install client dependencies
-RUN npm install
-
-# Copy the client source code to the container
-COPY client/ ./
-
-# Build the React app
-RUN npm run build
-
-# Stage 2: Build the server (Node/Express with TypeScript)
-FROM node:20-alpine AS server-build
-
-# Set working directory for server
 WORKDIR /app
 
-# Copy server dependencies and package.json
-COPY package.json package-lock.json tsconfig.json ./
+# Copy dependencies and lockfile
+COPY package.json package-lock.json ./
 
-# Install server dependencies
+# Install dependencies
 RUN npm install
 
-# Copy server source code
-COPY src/ ./src
+# Copy the rest of the source code
+COPY . .
 
-# Build server TypeScript
+# Build the app
 RUN npm run build
 
-# Stage 3: Final stage to run the app (server and serve React build)
+# Stage 2: Serve the build with a lightweight web server
 FROM node:20-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Copy server code from the build stage
-COPY --from=server-build /app/ ./
+# Install serve to serve the build directory
+RUN npm install -g serve
 
-# Copy client build from the client build stage
-COPY --from=client-build /app/client/build ./client/build
+# Copy built app from previous stage
+COPY --from=build /app/dist ./dist
 
-# Install production dependencies for server
-RUN npm install --only=production
+# Expose port 3000
+EXPOSE 3000
 
-# Expose the ports (frontend on 3000, backend on 3001)
-EXPOSE 3000 3001
-
-# Start the server (which will also serve the React app)
-CMD ["npm", "run", "start"]
+# Start the app
+CMD ["serve", "-s", "dist", "-l", "3000"]
