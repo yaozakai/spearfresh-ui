@@ -1,12 +1,19 @@
 import logo from '/logos/logo.svg'
 import { Link, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 function Header() {
   const [appsOpen, setAppsOpen] = useState(false);
   const [platformsOpen, setPlatformsOpen] = useState(false);
   const [appsTimeout, setAppsTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
   const [platformsTimeout, setPlatformsTimeout] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
 
   // Handlers for Apps dropdown
   const handleAppsEnter = () => {
@@ -27,6 +34,32 @@ function Header() {
     const timeout = setTimeout(() => setPlatformsOpen(false), 180);
     setPlatformsTimeout(timeout);
   };
+
+  // Toggle dark mode and update html class
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => {
+      const next = !prev;
+      if (next) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('theme', next ? 'dark' : 'light');
+      return next;
+    });
+  };
+
+  // On mount, sync with localStorage or system
+  useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else if (saved === 'light') {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   return (
     <header className="w-full mx-auto flex items-center justify-between px-8 py-4 bg-white/80 dark:bg-[#1a2332]/90 shadow-sm fixed top-0 left-1/2 -translate-x-1/2 z-30">
@@ -64,6 +97,14 @@ function Header() {
         <NavLink to="/" className={({ isActive }) => `hover:text-[#0c915e] dark:hover:text-[#42D49C] ${isActive ? 'font-bold underline' : ''}`}>About</NavLink>
         {/* Support */}
         <NavLink to="/support" className={({ isActive }) => `hover:text-[#0c915e] dark:hover:text-[#42D49C] ${isActive ? 'font-bold underline' : ''}`}>Support</NavLink>
+        {/* Light/Dark mode switch */}
+        <button
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          onClick={toggleDarkMode}
+          className="ml-4 p-2 rounded-full border border-transparent hover:border-gray-300 dark:hover:border-gray-600 transition-colors bg-white dark:bg-[#1a2332] text-gray-700 dark:text-gray-200 flex items-center justify-center"
+        >
+          {darkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+        </button>
       </nav>
     </header>
   );

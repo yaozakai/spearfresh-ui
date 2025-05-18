@@ -24,9 +24,9 @@ function PushToSprinklr() {
   }
 
   return (
-    <main className="flex-1 w-full flex flex-col">
+    <main className="flex-1 w-full flex flex-col pt-12">
       {/* Sub Nav Bar */}
-      <nav className="fixed top-[72px] w-full max-w-[1100px] mx-auto z-20 bg-white/80 dark:bg-[#1a2332]/90 shadow-sm border-b border-gray-100 dark:border-[#222c2a] flex gap-8 px-8 py-2 text-base font-medium overflow-x-auto">
+      <nav className="fixed rounded-br-full top-[72px] w-full  mx-auto z-20 bg-white/80 dark:bg-[#1a2332]/90 shadow-sm border-b border-gray-100 dark:border-[#222c2a] flex gap-8 px-8 py-2 text-base font-medium overflow-x-auto">
         Push To Sprinklr
         <a href="#features" className="hover:text-[#0c915e] dark:hover:text-[#42D49C]" onClick={e => { e.preventDefault(); scrollWithOffset('features'); }}>Features</a>
         <a href="#testimonials" className="hover:text-[#0c915e] dark:hover:text-[#42D49C]" onClick={e => { e.preventDefault(); scrollWithOffset('testimonials'); }}>Testimonials</a>
@@ -38,8 +38,8 @@ function PushToSprinklr() {
       <section className="w-full flex flex-col md:flex-row items-center justify-between gap-8 px-8 py-16 md:py-24 max-w-6xl mx-auto">
         <div className="flex-1 flex flex-col gap-6">
           <div className="items-center space-y-2">
-            <div className="pill flex items-center gap-1">
-              <img src='/logos/logo-monday.png' alt="App Logo" className="h-8 w-auto" />
+            <div className="pill flex items-center gap-1 w-fit">
+              <img src='/logos/logo-monday.png' alt="App Logo" className="h-8" />
               monday.com Marketplace
             </div>
             <h1 className="h5">Push to Sprinklr</h1>

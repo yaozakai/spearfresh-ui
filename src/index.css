@@ -97,7 +97,7 @@ button:focus-visible {
     @apply btn bg-[#fba919] text-[#143059] hover:bg-[#fccc75] hover:text-[#1d416e] hover:ring-2 hover:ring-gray-300 dark:bg-[#fba919] dark:text-[#143059] dark:hover:bg-[#fccc75];
   }
   .btn-nav {
-    @apply btn px-4 py-2 hover:bg-[#e8f7f1] dark:hover:bg-[#143059] hover:text-[#0c915e] dark:hover:text-[#42D49C];
+    @apply btn px-4 py-2 bg-[#e8f7f1] dark:bg-[#143059] hover:bg-[#c6ede0] dark:hover:bg-[#1a2332] text-[#143059] dark:text-white hover:text-[#0c915e] dark:hover:text-[#42D49C];
   }
   .btn-nav-select {
     @apply btn block px-4 py-2 hover:bg-[#e8f7f1] dark:hover:bg-[#143059];
