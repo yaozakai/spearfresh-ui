@@ -1,5 +1,5 @@
 import logo from '/logos/logo.svg'
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaSun, FaMoon } from 'react-icons/fa';
 
@@ -14,6 +14,12 @@ function Header() {
     }
     return false;
   });
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
 
   // Handlers for Apps dropdown
   const handleAppsEnter = () => {
