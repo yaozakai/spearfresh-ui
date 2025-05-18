@@ -7,6 +7,8 @@ import Header from "./main/Header";
 import Footer from "./main/Footer";
 import PushToSprinklr from "./pages/apps/PushToSprinklr";
 import Support from "./pages/Support";
+import SocialPlanner from "./pages/apps/SocialPlanner";
+import TelegramBotListener from "./pages/apps/TelegramBotListener";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/push-to-sprinklr" element={<PushToSprinklr />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/spearfresh-social-planner" element={<SocialPlanner />} />
+          <Route path="/telegram-bot-listener" element={<TelegramBotListener />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* Footer */}
