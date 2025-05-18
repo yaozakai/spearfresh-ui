@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
@@ -33,7 +34,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-
+  @apply font-mulish;
 }
 
 h1 {
@@ -94,6 +95,20 @@ button:focus-visible {
   }
   .btn-yellow {
     @apply btn bg-[#fba919] text-[#143059] hover:bg-[#fccc75] hover:text-[#1d416e] hover:ring-2 hover:ring-gray-300 dark:bg-[#fba919] dark:text-[#143059] dark:hover:bg-[#fccc75];
+  }
+  .btn-nav {
+    @apply btn px-4 py-2 hover:bg-[#e8f7f1] dark:hover:bg-[#143059] hover:text-[#0c915e] dark:hover:text-[#42D49C];
+  }
+  .btn-nav-select {
+    @apply btn block px-4 py-2 hover:bg-[#e8f7f1] dark:hover:bg-[#143059];
+  }
+
+  .pill {
+    @apply btn bg-[#d0d6de] text-[#143059] rounded-full dark:bg-[#2a3340] dark:text-white;
+  }
+
+  .header {
+    @apply font-mulish font-bold text-3xl uppercase rounded-full dark:text-white;
   }
 
   .h1 {

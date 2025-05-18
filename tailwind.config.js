@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         overlock: ['Overlock', 'cursive'],
+        mulish: ['Mulish', 'sans-serif'],
       },
     },
   },
