@@ -1,4 +1,3 @@
-import React from "react";
 import { useInView } from "../../main/useInView";
 import { FeatureCard } from "./components/FeatureCard";
 import { PricingCard } from "./components/PricingCard";

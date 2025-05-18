@@ -1,4 +1,3 @@
-import React from "react";
 
 export function FeatureCard({ icon, title, desc, animate, delay }: { icon: string, title: string, desc: string, animate?: boolean, delay?: number }) {
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 
 export function TestimonialCard({ name, quote, animate, delay }: { name: string, quote: string, animate?: boolean, delay?: number }) {
   return (
