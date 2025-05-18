@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import About from "./pages/About";
-
 import Faqs from "./pages/Faqs";
 import NotFound from "./pages/NotFound";
 import Header from "./main/Header";
 import Footer from "./main/Footer";
 import PushToSprinklr from "./pages/apps/PushToSprinklr";
+import Support from "./pages/Support";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/push-to-sprinklr" element={<PushToSprinklr />} />
+          <Route path="/support" element={<Support />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         {/* Footer */}

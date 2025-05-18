@@ -12,7 +12,7 @@ function About() {
           <p className="text-lg max-w-2xl text-gray-600 dark:text-gray-300">We are developers with over 15 years of experience in SaaS, CRM, and multimedia integrations. Our mission is to help social media managers better plan and execute their content by connecting the tools they use every day to the networks that matter most.</p>
         </div>
         <div className="flex-1 flex items-center justify-center">
-          <img src="/logos/logo-monday.png" alt="monday.com integration" className="h-32 w-auto rounded-xl shadow-lg bg-white p-4 dark:bg-[#1a2332]" />
+          <img src="/logos/logo.svg" alt="monday.com integration" className="h-32 w-auto rounded-xl shadow-lg bg-white p-4 dark:bg-[#1a2332]" />
         </div>
       </section>
 
