@@ -57,6 +57,20 @@ function SocialPlanner() {
           </div>
         </div>
       </section>
+      {/* Social Integrations Banner */}
+      <div className={`flex flex-col items-center mb-10 transition-all duration-700 ${featuresInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        aria-label="Supported Social Integrations"
+      >
+        <span className="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2 font-semibold">Supported Integrations</span>
+        <div className="flex flex-wrap items-center justify-center gap-6 bg-white/70 dark:bg-[#1a2332]/70 rounded-lg px-6 py-3 shadow border border-gray-100 dark:border-[#222c2a]">
+          <img src="/logos/logo-monday.png" alt="monday.com" className="h-8 w-auto" title="monday.com" />
+          <img src="/logos/logo-word.svg" alt="Meta" className="h-8 w-auto" title="Meta (Facebook & Instagram)" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/X_logo_2023.svg" alt="Twitter/X" className="h-7 w-auto" title="Twitter/X" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Nextdoor_logo_2023.svg" alt="Nextdoor" className="h-7 w-auto" title="Nextdoor" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" className="h-7 w-auto" title="Telegram" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Threads_%28app%29_logo.svg" alt="Meta Threads" className="h-7 w-auto" title="Meta Threads" />
+        </div>
+      </div>
       {/* Features Section */}
       <section ref={featuresRef} className={`w-full py-12 px-8 bg-white/60 dark:bg-[#1a2332]/80 max-w-5xl mx-auto rounded-xl mb-8 transition-all duration-700 ${featuresInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>        
         <h2 className={`h2 text-center mb-8 transition-all duration-700 ${featuresInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>Key Features</h2>
@@ -68,42 +82,54 @@ function SocialPlanner() {
       </section>
       {/* Meta Integration */}
       <section ref={metaRef} id="meta" className={`w-full py-16 px-8 bg-white/60 dark:bg-[#1a2332]/80 max-w-5xl mx-auto rounded-xl mb-8 transition-all duration-700 ${metaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>        
-        <h2 className={`h2 mb-4 transition-all duration-700 ${metaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>Meta (Facebook & Instagram) Integration</h2>
+        <h2 className={`h2 mb-4 transition-all duration-700 ${metaInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>Meta (Facebook, Instagram & Threads) Integration</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
           <FeatureCard icon="📄" title="Facebook Pages" desc="Post status updates, photos, and videos to your managed Pages." animate={metaInView} delay={0} />
           <FeatureCard icon="📸" title="Instagram Business" desc="Schedule or publish image/video posts via the Content Publishing API." animate={metaInView} delay={100} />
           <FeatureCard icon="👥" title="Facebook Groups" desc="Post to groups you manage (requires app review/permissions)." animate={metaInView} delay={200} />
           <FeatureCard icon="🙅‍♂️" title="User Timelines" desc="Not supported due to privacy policies." animate={metaInView} delay={300} />
+          <FeatureCard icon="#" title="Meta Threads" desc="Post text and image updates to Threads. Supports scheduled posts, hashtags, and cross-posting to Instagram. Unique: Engage with Threads-specific conversations and trends." animate={metaInView} delay={400} />
         </div>
+        <h3 className="text-lg font-semibold mt-8 mb-2 text-gray-800 dark:text-gray-200">Supported Platforms</h3>
         <div className="overflow-x-auto mb-4">
           <table className="min-w-full text-left border border-gray-200 dark:border-[#222c2a]">
             <thead>
               <tr className="bg-[#e8f7f1] dark:bg-[#143059]">
-                <th className="px-4 py-2">Surface</th>
-                <th className="px-4 py-2">Supports Posting?</th>
-                <th className="px-4 py-2">Example</th>
+                <th className="px-4 py-2">Account Type</th>
+                <th className="px-4 py-2">Post via API?</th>
+                <th className="px-4 py-2">Notes</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="px-4 py-2 font-bold">Facebook Pages</td>
-                <td className="px-4 py-2">✅ Yes</td>
-                <td className="px-4 py-2">Post status updates, photos, videos</td>
+                <td className="px-4 py-2 font-bold">Facebook Personal Profile</td>
+                <td className="px-4 py-2 text-red-600 font-bold">❌ Not supported</td>
+                <td className="px-4 py-2">Meta disabled publishing to personal profiles via the API years ago for privacy/security reasons.</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-bold">Instagram Business</td>
-                <td className="px-4 py-2">✅ Yes (via Content Publishing API)</td>
-                <td className="px-4 py-2">Schedule or publish image/video posts</td>
+                <td className="px-4 py-2 font-bold">Facebook Page</td>
+                <td className="px-4 py-2 text-green-600 font-bold">✅ Supported</td>
+                <td className="px-4 py-2">Use <code>pages_manage_posts</code> with the Graph API.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-bold">Instagram Personal Account</td>
+                <td className="px-4 py-2 text-red-600 font-bold">❌ Not supported</td>
+                <td className="px-4 py-2">Must be a <b>Business</b> or <b>Creator</b> account connected to a Facebook Page.</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-bold">Instagram Business/Creator Account</td>
+                <td className="px-4 py-2 text-green-600 font-bold">✅ Supported</td>
+                <td className="px-4 py-2">Requires <code>instagram_content_publish</code> and a linked Facebook Page.</td>
               </tr>
               <tr>
                 <td className="px-4 py-2 font-bold">Facebook Groups</td>
-                <td className="px-4 py-2">🔶 Partially (Requires app review and permissions)</td>
-                <td className="px-4 py-2">Posts possible in groups your app manages</td>
+                <td className="px-4 py-2 text-yellow-600 font-bold">🔶 Partially</td>
+                <td className="px-4 py-2">Requires app review and permissions. Posts possible in groups your app manages.</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-bold">User Timelines</td>
-                <td className="px-4 py-2">❌ No longer supported</td>
-                <td className="px-4 py-2">Restricted due to privacy policies</td>
+                <td className="px-4 py-2 font-bold">Meta Threads</td>
+                <td className="px-4 py-2 text-green-600 font-bold">✅ Supported</td>
+                <td className="px-4 py-2">Post text, images, schedule, hashtags, cross-post to Instagram. Unique: join Threads-specific conversations.</td>
               </tr>
             </tbody>
           </table>
@@ -111,7 +137,8 @@ function SocialPlanner() {
         <ul className="list-disc ml-6 text-gray-700 dark:text-gray-300">
           <li>Scheduling, cancel, delete, enable/disable comments, location selection</li>
           <li>Syncs with your monday.com board (Social Media Planner template)</li>
-          <li>Supports Facebook Pages, Instagram Business, and (partially) Facebook Groups</li>
+          <li>Supports Facebook Pages, Instagram Business, Threads, and (partially) Facebook Groups</li>
+          <li>Threads unique: Schedule posts, use hashtags, cross-post to Instagram, and join Threads-specific conversations</li>
         </ul>
       </section>
       {/* Twitter/X Integration */}
